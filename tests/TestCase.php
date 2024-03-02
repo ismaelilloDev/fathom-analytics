@@ -3,8 +3,8 @@
 namespace Ismaelillodev\FathomAnalytics\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Ismaelillodev\FathomAnalytics\FathomAnalyticsServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

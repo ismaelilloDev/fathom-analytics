@@ -2,9 +2,9 @@
 
 namespace Ismaelillodev\FathomAnalytics;
 
+use Ismaelillodev\FathomAnalytics\Commands\FathomAnalyticsCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Ismaelillodev\FathomAnalytics\Commands\FathomAnalyticsCommand;
 
 class FathomAnalyticsServiceProvider extends PackageServiceProvider
 {
