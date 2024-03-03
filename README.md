@@ -47,6 +47,10 @@ If you have any questions about how to make a specific request you can visit the
 
 ### Aggregations
 
+
+Call the aggregations function and pass an Aggregation DTO.
+
+
 ```php
 
     $this->fathomAnalytics->aggregations(
