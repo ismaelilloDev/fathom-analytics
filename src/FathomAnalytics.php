@@ -2,10 +2,18 @@
 
 namespace Ismaelillodev\FathomAnalytics;
 
+use Ismaelillodev\FathomAnalytics\Client\FathomClient;
+use Ismaelillodev\FathomAnalytics\DTO\Aggregation;
+use Ismaelillodev\FathomAnalytics\Requests\AggregationRequest;
+
 class FathomAnalytics
 {
-    public function sayHello()
+    public function __construct(
+        private FathomClient $fathomClient
+    ){}
+
+    public function aggregations(Aggregation $aggregation)
     {
-        logger()->info('Hello from package');
+        return $this->fathomClient->send(new AggregationRequest($aggregation));
     }
 }
