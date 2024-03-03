@@ -10,7 +10,8 @@ class AggregationRequest extends FathomRequest
 {
     public function __construct(
         public Aggregation $aggregation
-    ){}
+    ) {
+    }
 
     public function getMethod(): string
     {

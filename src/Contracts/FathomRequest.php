@@ -2,11 +2,11 @@
 
 namespace Ismaelillodev\FathomAnalytics\Contracts;
 
-abstract class FathomRequest {
+abstract class FathomRequest
+{
+    abstract public function getMethod(): string;
 
-    public abstract function getMethod(): string;
-
-    public abstract function getUri(): string;
+    abstract public function getUri(): string;
 
     public function getBody(): ?array
     {
@@ -18,4 +18,3 @@ abstract class FathomRequest {
         return null;
     }
 }
-

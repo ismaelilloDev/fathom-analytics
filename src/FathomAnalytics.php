@@ -10,7 +10,8 @@ class FathomAnalytics
 {
     public function __construct(
         private FathomClient $fathomClient
-    ){}
+    ) {
+    }
 
     public function aggregations(Aggregation $aggregation)
     {

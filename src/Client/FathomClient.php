@@ -5,8 +5,8 @@ namespace Ismaelillodev\FathomAnalytics\Client;
 use GuzzleHttp\Client;
 use Ismaelillodev\FathomAnalytics\Contracts\FathomRequest;
 
-class FathomClient {
-
+class FathomClient
+{
     private Client $client;
 
     public function __construct()
@@ -16,13 +16,16 @@ class FathomClient {
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-                'Authorization' => 'Bearer '. config('services.fathom.access_token')
-            ]
+                'Authorization' => 'Bearer '.config('services.fathom.access_token'),
+            ],
         ]);
     }
-    public function send(FathomRequest $request) {
+
+    public function send(FathomRequest $request)
+    {
         $options = $this->getOptions($request);
         $response = $this->client->request($request->getMethod(), $request->getUri(), $options);
+
         return json_decode($response->getBody()->getContents(), true);
     }
 
@@ -30,11 +33,11 @@ class FathomClient {
     {
         $options = [];
 
-        if($request->getQueryParams()) {
+        if ($request->getQueryParams()) {
             $options['query'] = $request->getQueryParams();
         }
 
-        if($request->getBody()) {
+        if ($request->getBody()) {
             $options['body'] = json_encode($request->getBody());
         }
 
