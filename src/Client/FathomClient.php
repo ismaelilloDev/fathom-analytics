@@ -16,7 +16,7 @@ class FathomClient
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-                'Authorization' => 'Bearer '.config('services.fathom.access_token'),
+                'Authorization' => 'Bearer '.config('fathom-analytics.access_token'),
             ],
         ]);
     }
