@@ -54,8 +54,7 @@ If you have any questions about how to make a specific request you can visit the
                 entity: 'pageview',
                 entity_id: 'your_site_id',
                 aggregates: 'visits',
-            ));
-        //do something awesome with the response!
+    ));
 ```
             
 ## Changelog
