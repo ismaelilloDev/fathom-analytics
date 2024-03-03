@@ -10,7 +10,7 @@ Install the package via composer:
 composer require ismaelillodev/fathom-analytics:dev-main
 ```
 
-Publish the config file with and add your FATHOM_ACCESS_TOKEN:
+Publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="fathom-analytics-config"
