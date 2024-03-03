@@ -1,67 +1,63 @@
-# This is my package fathom-analytics
+# Warning
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/ismaelillodev/fathom-analytics.svg?style=flat-square)](https://packagist.org/packages/ismaelillodev/fathom-analytics)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/ismaelillodev/fathom-analytics/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/ismaelillodev/fathom-analytics/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ismaelillodev/fathom-analytics/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/ismaelillodev/fathom-analytics/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/ismaelillodev/fathom-analytics.svg?style=flat-square)](https://packagist.org/packages/ismaelillodev/fathom-analytics)
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/fathom-analytics.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/fathom-analytics)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This package is under development right now. Any suggestions are greatly appreciated!
 
 ## Installation
 
-You can install the package via composer:
+Install the package via composer:
 
 ```bash
-composer require ismaelillodev/fathom-analytics
+composer require ismaelillodev/fathom-analytics:dev-main
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="fathom-analytics-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
+Publish the config file with and add your FATHOM_ACCESS_TOKEN:
 
 ```bash
 php artisan vendor:publish --tag="fathom-analytics-config"
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="fathom-analytics-views"
-```
+Add your FATHOM_ACCESS_TOKEN variable to your .env
 
 ## Usage
 
 ```php
-$fathomAnalytics = new Ismaelillodev\FathomAnalytics();
-echo $fathomAnalytics->echoPhrase('Hello, Ismaelillodev!');
+
+    use Ismaelillodev\FathomAnalytics\DTO\Aggregation;
+    use Ismaelillodev\FathomAnalytics\FathomAnalytics;
+
+    public function __construct(
+            private FathomAnalytics $fathomAnalytics
+    ){}
+
+    public function handle()
+    {
+        $response = $this->fathomAnalytics->aggregations(
+            new Aggregation(
+                entity: 'pageview',
+                entity_id: 'your_site_id',
+                aggregates: 'uniques',
+                field_grouping: 'hostname,pathname'
+            ));
+        //do something awesome with the response!
+    }
 ```
+## Current features
 
-## Testing
+If you have any questions about how to make a specific request you can visit the API documentation (https://usefathom.com/api).
 
-```bash
-composer test
+### Aggregations
+
+```php
+
+    $this->fathomAnalytics->aggregations(
+            new Aggregation(
+                entity: 'pageview',
+                entity_id: 'your_site_id',
+                aggregates: 'visits',
+            ));
+        //do something awesome with the response!
 ```
-
+            
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
