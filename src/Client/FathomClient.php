@@ -9,20 +9,9 @@ class FathomClient
 {
     private Client $client;
 
-    public function __construct()
-    {
-        $this->client = $this->client = new Client([
-            'base_uri' => 'https://api.usefathom.com',
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
-                'Authorization' => 'Bearer '.config('fathom-analytics.access_token'),
-            ],
-        ]);
-    }
-
     public function send(FathomRequest $request)
     {
+        $this->setClient();
         $options = $this->getOptions($request);
         $response = $this->client->request($request->getMethod(), $request->getUri(), $options);
 
@@ -43,5 +32,17 @@ class FathomClient
 
         return $options;
 
+    }
+
+    private function setClient()
+    {
+        $this->client = new Client([
+            'base_uri' => 'https://api.usefathom.com',
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+                'Authorization' => 'Bearer '.config('fathom-analytics.access_token'),
+            ],
+        ]);
     }
 }
